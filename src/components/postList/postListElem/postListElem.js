@@ -1,13 +1,21 @@
 import React from 'react';
-import './postListElem.css'
+import Card from "reactstrap/es/Card";
+import CardTitle from "reactstrap/es/CardTitle";
+import CardBody from "reactstrap/es/CardBody";
+import CardSubtitle from "reactstrap/es/CardSubtitle";
+import Button from "reactstrap/es/Button";
 
-const PostListElem = props => {
+const PostListElem = (
+    {date, title}
+) => {
     return (
-        <li className='post-list-elem'>
-            <span className='post-list-elem-date'>Created on: {props.date}</span>
-            <span className='post-list-elem-title'><b>{props.title}</b></span>
-            <button className='post-list-elem-button'>Read more</button>
-        </li>
+        <Card className='mt-2'>
+            <CardBody>
+                <CardSubtitle>{date}</CardSubtitle>
+                <CardTitle className='font-weight-bolder'>{title}</CardTitle>
+                <Button>Read more</Button>
+            </CardBody>
+        </Card>
     );
 };
 
