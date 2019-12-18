@@ -11,6 +11,7 @@ const Navigation = () => {
             <Nav className="ml-auto" navbar>
                 <NavItm to='/'>Home</NavItm>
                 <NavItm to='/add'>Add</NavItm>
+                <NavItm to='/About'>About</NavItm>
             </Nav>
         </Navbar>
     );

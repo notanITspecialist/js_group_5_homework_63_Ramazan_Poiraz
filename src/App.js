@@ -8,6 +8,7 @@ import {
 import Navigation from "./components/navigation/navigation";
 import PostList from "./components/postList/postList";
 import AddPost from "./components/addPost/addPost";
+import About from "./components/about/about";
 
 class App extends Component {
     render() {
@@ -18,6 +19,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' component={PostList}/>
                         <Route path='/add' component={AddPost}/>
+                        <Route path='/about' component={About}/>
                     </Switch>
                 </Router>
             </Container>
