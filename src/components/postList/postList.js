@@ -8,17 +8,15 @@ class PostList extends Component {
     };
 
     async componentDidMount() {
-        let state = [...this.state.posts];
         const posts = await axios.get('https://lesson-64-49739.firebaseio.com/blog.json');
         const postsList = posts.data;
         const data = Object.keys(postsList).map(elem=>({...postsList[elem],id: elem }));
-        state = data;
-        this.setState({posts: state})
+        this.setState({posts: data})
     }
     render() {
         const state = this.state.posts;
         const list = state.map(elem => (
-            <PostListElem key={elem.id} date={elem.date} title={elem.title}/>
+            <PostListElem key={elem.id} date={elem.date} title={elem.title} id={elem.id}/>
         ));
         return (
             <ul style={{padding: '0', listStyle: 'none'}}>

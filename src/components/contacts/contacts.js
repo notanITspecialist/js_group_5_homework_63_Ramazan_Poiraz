@@ -2,8 +2,8 @@ import React from 'react';
 
 const Contacts = () => {
     return (
-        <div>
-            <p>Ссылки на сайты наших пользователей</p>
+        <div style={{marginTop: '30px'}}>
+            <h2>Ссылки на сайты наших пользователей</h2>
             <ul>
                 <li><a href="https://www.google.com/">GOOGLE</a></li>
                 <li><a href="https://twitter.com/">TWITTER</a></li>

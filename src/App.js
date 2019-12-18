@@ -9,6 +9,8 @@ import Navigation from "./components/navigation/navigation";
 import PostList from "./components/postList/postList";
 import AddPost from "./components/addPost/addPost";
 import About from "./components/about/about";
+import Contacts from "./components/contacts/contacts";
+import FullInfo from "./components/fullInfo/fullInfo";
 
 class App extends Component {
     render() {
@@ -17,9 +19,11 @@ class App extends Component {
                 <Router>
                     <Navigation/>
                     <Switch>
-                        <Route exact path='/' component={PostList}/>
+                        <Route path='/' exact component={PostList}/>
+                        <Route path='/fullInfo/:id' component={FullInfo}/>
                         <Route path='/add' component={AddPost}/>
                         <Route path='/about' component={About}/>
+                        <Route path='/contacts' component={Contacts}/>
                     </Switch>
                 </Router>
             </Container>
