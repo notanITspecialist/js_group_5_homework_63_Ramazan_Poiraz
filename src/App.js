@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import Container from "reactstrap/es/Container";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import Navigation from "./components/navigation/navigation";
 
 class App extends Component {
   add =() => {
@@ -10,9 +17,14 @@ class App extends Component {
   };
     render() {
         return (
-            <div>
-
-            </div>
+            <Container>
+                <Router>
+                    <Navigation/>
+                    <Switch>
+                        <Route exact path='/' render={() => <h1>home</h1>}/>
+                    </Switch>
+                </Router>
+            </Container>
         );
     }
 }
