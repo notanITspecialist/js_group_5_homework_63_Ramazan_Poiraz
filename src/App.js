@@ -11,6 +11,7 @@ import AddPost from "./components/addPost/addPost";
 import About from "./components/about/about";
 import Contacts from "./components/contacts/contacts";
 import FullInfo from "./components/fullInfo/fullInfo";
+import EditPost from "./components/editPost/editPost";
 
 class App extends Component {
     render() {
@@ -23,6 +24,7 @@ class App extends Component {
                             <Route path='/' exact component={PostList}/>
                             <Route path='/add' component={AddPost}/>
                             <Route path='/about' component={About}/>
+                            <Route path='/fullInfo/:id/edit' component={EditPost}/>
                             <Route path='/fullInfo/:id' component={FullInfo}/>
                             <Route path='/contacts' component={Contacts}/>
                         </Switch>

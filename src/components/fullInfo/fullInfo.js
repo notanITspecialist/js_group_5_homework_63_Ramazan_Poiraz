@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import Button from "reactstrap/es/Button";
+import {NavLink} from "react-router-dom";
 
 class FullInfo extends Component {
     state = {
@@ -25,9 +26,11 @@ class FullInfo extends Component {
                     <p className='ml-auto'>{this.state.data.date}</p>
                 </div>
                 <div className='border my-2 p-3 overflow-auto' style={{borderRadius: '.255rem', height: '85%'}}>
-                    <p>Text: {this.state.data.text}</p>
+                    <p>{this.state.data.text}</p>
                 </div>
-                <Button color='success mr-2'>Edit</Button>
+                <NavLink to={'/fullInfo/'+this.props.match.params.id+'/edit'}>
+                    <Button color='success mr-2'>Edit</Button>
+                </NavLink>
                 <Button onClick={this.deletePost} color='danger'>Delete</Button>
             </div>
         );
