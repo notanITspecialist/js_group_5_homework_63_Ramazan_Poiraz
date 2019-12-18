@@ -1,0 +1,25 @@
+.post-list-elem {
+    position: relative;
+    width: 30%;
+    height: 90px;
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
+
+.post-list-elem-date {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.post-list-elem-title {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+}
+
+.post-list-elem-button {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+}

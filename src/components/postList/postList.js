@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import PostListElem from "./postListElem/postListElem";
 
 class PostList extends Component {
     state = {
@@ -14,12 +15,15 @@ class PostList extends Component {
         state = data;
         this.setState({posts: state})
     }
-
     render() {
+        const state = this.state.posts;
+        const list = state.map(elem => (
+            <PostListElem key={elem.id} date={elem.date} title={elem.title}/>
+        ));
         return (
-            <div>
-
-            </div>
+            <ul style={{padding: '0', listStyle: 'none'}}>
+                {list}
+            </ul>
         );
     }
 }
