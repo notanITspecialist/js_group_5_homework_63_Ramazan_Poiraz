@@ -14,8 +14,8 @@ class AddPost extends Component {
     changeTitle = e => {
       this.setState({title: e.target.value})
     };
-    changeText = e => {
-        this.setState({text: e.target.value})
+    changeText = editorState => {
+        this.setState({text: editorState.blocks[0].text});
     };
 
     addPost = async e => {
@@ -24,11 +24,12 @@ class AddPost extends Component {
         const objDate = date.getMonth() + '.' + date.getDate() + '.' + date.getFullYear() + ' ' + date.getHours() +':'+ date.getMinutes();
         const info = {...this.state, date: objDate};
         await axios.post('https://lesson-64-49739.firebaseio.com/blog.json', info);
+        console.log(this.state.text);
         this.setState({title: '', text: ''})
     };
 
     render() {
-        return (
+            return (
             <div>
                 <h1 className='my-4'>Add new post</h1>
                 <Form onSubmit={this.addPost}>
@@ -38,10 +39,10 @@ class AddPost extends Component {
                     </label>
                     <p className='m-0'>Description</p>
                     <Editor
-                        EditorState={this.changeText}
+                        onChange={this.changeText}
                         editorClassName='editor'
                     />
-                    <Button className='my-40'>Add</Button>
+                    {this.state.text.length > 0 && this.state.title.length > 0 ? <Button className='my-4'>Add</Button> : <Button className='my-4' disabled>Add</Button>}
                 </Form>
             </div>
         );
