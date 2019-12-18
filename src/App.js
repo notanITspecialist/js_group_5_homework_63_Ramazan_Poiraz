@@ -15,18 +15,20 @@ import FullInfo from "./components/fullInfo/fullInfo";
 class App extends Component {
     render() {
         return (
-            <Container>
+            <>
                 <Router>
                     <Navigation/>
-                    <Switch>
-                        <Route path='/' exact component={PostList}/>
-                        <Route path='/fullInfo/:id' component={FullInfo}/>
-                        <Route path='/add' component={AddPost}/>
-                        <Route path='/about' component={About}/>
-                        <Route path='/contacts' component={Contacts}/>
-                    </Switch>
+                    <Container>
+                        <Switch>
+                            <Route path='/' exact component={PostList}/>
+                            <Route path='/fullInfo/:id' component={FullInfo}/>
+                            <Route path='/add' component={AddPost}/>
+                            <Route path='/about' component={About}/>
+                            <Route path='/contacts' component={Contacts}/>
+                        </Switch>
+                    </Container>
                 </Router>
-            </Container>
+            </>
         );
     }
 }
