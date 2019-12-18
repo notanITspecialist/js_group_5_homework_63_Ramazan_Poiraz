@@ -12,6 +12,11 @@ class FullInfo extends Component {
         this.setState({data: data.data});
     }
 
+    deletePost = async () => {
+        await axios.delete('https://lesson-64-49739.firebaseio.com/blog/'+this.props.match.params.id+'.json');
+        this.props.history.replace('/');
+    };
+
     render() {
         return (
             <div className='border mt-4 p-3' style={{borderRadius: '.255rem', height: 'calc(100vh - 100px)'}}>
@@ -23,7 +28,7 @@ class FullInfo extends Component {
                     <p>Text: {this.state.data.text}</p>
                 </div>
                 <Button color='success mr-2'>Edit</Button>
-                <Button color='danger'>Delete</Button>
+                <Button onClick={this.deletePost} color='danger'>Delete</Button>
             </div>
         );
     }
