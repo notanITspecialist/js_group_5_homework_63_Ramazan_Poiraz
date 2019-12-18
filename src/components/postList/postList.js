@@ -22,7 +22,7 @@ class PostList extends Component {
         ));
         return (
             <ul style={{padding: '0', listStyle: 'none'}}>
-                {list}
+                {list.reverse()}
             </ul>
         );
     }
