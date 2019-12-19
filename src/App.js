@@ -13,6 +13,7 @@ import Contacts from "./components/contacts/contacts";
 import FullInfo from "./components/fullInfo/fullInfo";
 import EditPost from "./components/editPost/editPost";
 import AboutEdit from "./components/aboutEdit/aboutEdit";
+import ContactsEdit from "./components/contactsEdit/contactsEdit";
 
 class App extends Component {
     render() {
@@ -28,6 +29,7 @@ class App extends Component {
                             <Route path='/about' component={About}/>
                             <Route path='/fullInfo/:id/edit' component={EditPost}/>
                             <Route path='/fullInfo/:id' component={FullInfo}/>
+                            <Route path='/contacts/edit' component={ContactsEdit}/>
                             <Route path='/contacts' component={Contacts}/>
                         </Switch>
                     </Container>
