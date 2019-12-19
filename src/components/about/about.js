@@ -18,8 +18,8 @@ class About extends Component {
     render() {
         return (
             <div style={{marginTop: '30px'}}>
-                <h2>Информация о нас</h2>
-                <p>Какая нибудь информация о нас</p>
+                <h2>{this.state.data.title}</h2>
+                <p>{this.state.data.text}</p>
                 <Button>Edit</Button>
             </div>
         );
