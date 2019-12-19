@@ -24,8 +24,7 @@ class AddPost extends Component {
         const objDate = date.getMonth() + '.' + date.getDate() + '.' + date.getFullYear() + ' ' + date.getHours() +':'+ date.getMinutes();
         const info = {...this.state, date: objDate};
         await axios.post('https://lesson-64-49739.firebaseio.com/blog.json', info);
-        console.log(this.state.text);
-        this.setState({title: '', text: ''})
+        this.props.history.replace('/');
     };
 
     render() {
