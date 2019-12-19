@@ -9,9 +9,11 @@ class PostList extends Component {
 
     async componentDidMount() {
         const posts = await axios.get('https://lesson-64-49739.firebaseio.com/blog.json');
-        const postsList = posts.data;
-        const data = Object.keys(postsList).map(elem=>({...postsList[elem],id: elem }));
-        this.setState({posts: data})
+        if(posts.data !== null){
+            const postsList = posts.data;
+            const data = Object.keys(postsList).map(elem=>({...postsList[elem],id: elem }));
+            this.setState({posts: data})
+        }
     }
     render() {
         const state = this.state.posts;
@@ -19,9 +21,9 @@ class PostList extends Component {
             <PostListElem key={elem.id} date={elem.date} title={elem.title} id={elem.id}/>
         ));
         return (
-            <ul style={{padding: '0', listStyle: 'none'}}>
-                {list.reverse()}
-            </ul>
+            <div className="p-0">
+                {list.length > 0 ? list.reverse() : <h1 className="text-center mt-3">List of posts is empty</h1> }
+            </div>
         );
     }
 }
