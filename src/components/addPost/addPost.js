@@ -26,6 +26,7 @@ class AddPost extends Component {
         await axios.post('https://lesson-64-49739.firebaseio.com/blog.json', info);
         console.log(this.state.text);
         this.setState({title: '', text: ''})
+        this.props.history.replace('/');
     };
 
     render() {

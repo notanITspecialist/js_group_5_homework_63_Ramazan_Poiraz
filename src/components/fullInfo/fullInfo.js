@@ -25,7 +25,7 @@ class FullInfo extends Component {
                     <p className='ml-auto'>{this.state.data.date}</p>
                 </div>
                 <div className='border my-2 p-3 overflow-auto' style={{borderRadius: '.255rem', height: '85%'}}>
-                    <p>Text: {this.state.data.text}</p>
+                    <p>{this.state.data.text}</p>
                 </div>
                 <Button color='success mr-2'>Edit</Button>
                 <Button onClick={this.deletePost} color='danger'>Delete</Button>
