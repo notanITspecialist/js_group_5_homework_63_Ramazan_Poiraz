@@ -39,7 +39,7 @@ class EditPost extends Component {
                         <Input onChange={this.changeTitle} value={this.state.title} id='title' />
                     </label>
                     <p className='m-0'>Description</p>
-                    <Input type="textarea" onChange={this.changeText} value={this.state.text}/>
+                    <Input type="textarea" onChange={this.changeText} value={this.state.text} style={{height: '400px'}} />
                     {this.state.text.length > 0 && this.state.title.length > 0 ? <Button className='my-4'>Add</Button> : <Button className='my-4' disabled>Add</Button>}
                 </Form>
             </div>
