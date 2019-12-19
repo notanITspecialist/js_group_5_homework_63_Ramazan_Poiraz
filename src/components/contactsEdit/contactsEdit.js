@@ -29,8 +29,7 @@ class ContactsEdit extends Component {
     addLink = async e => {
         e.preventDefault();
         const data = {...this.state.data};
-        const links = {[this.state.linkName]: {id: nanoid(), link: this.state.link}, ...data.links};
-        data.links = links;
+        data.links = {...data.links, [this.state.linkName]: {id: nanoid(), link: this.state.link}};
         this.setState({data: data, link: '', linkName: ''});
     };
 
@@ -65,7 +64,7 @@ class ContactsEdit extends Component {
                         <Input onChange={this.changeTitle} value={this.state.title} id='title' />
                     </label>
                     <p className='m-0'>Description</p>
-                    <Input type="textarea" onChange={this.changeText} value={this.state.text}/>
+                    <Input type="textarea" onChange={this.changeText} value={this.state.text} style={{height: '400px'}}/>
                     <p>Links</p>
                     <ul>
                         {Object.keys(this.state.data.links).map(link => {

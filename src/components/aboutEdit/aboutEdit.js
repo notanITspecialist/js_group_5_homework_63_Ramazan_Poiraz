@@ -19,7 +19,7 @@ class AboutEdit extends Component {
     editAbout = async e => {
         e.preventDefault();
         const data = {...this.state.data, title: this.state.title, text: this.state.text};
-        await axios.put('https://lesson-64-49739.firebaseio.com/about/'+data.id+'.json',data)
+        await axios.put('https://lesson-64-49739.firebaseio.com/about/'+data.id+'.json',data);
         this.props.history.replace('/about');
     };
 
@@ -40,7 +40,7 @@ class AboutEdit extends Component {
                         <Input onChange={this.changeTitle} value={this.state.title} id='title' />
                     </label>
                     <p className='m-0'>About us</p>
-                    <Input type="textarea" onChange={this.changeText} value={this.state.text}/>
+                    <Input type="textarea" onChange={this.changeText} value={this.state.text} style={{height: '400px'}}/>
                     {this.state.text.length > 0 && this.state.title.length > 0 ? <Button className='my-4'>Add</Button> : <Button className='my-4' disabled>Add</Button>}
                 </Form>
             </div>
