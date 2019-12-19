@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import {Form, Input} from "reactstrap";
 import Button from "reactstrap/lib/Button";
+import nanoid from "nanoid";
 
 class ContactsEdit extends Component {
     state = {
-        data: {},
+        data: null,
         title: '',
         text: '',
+        linkName: '',
+        link: '',
     };
 
     async componentDidMount() {
@@ -19,8 +22,22 @@ class ContactsEdit extends Component {
     editAbout = async e => {
         e.preventDefault();
         const data = {...this.state.data, title: this.state.title, text: this.state.text};
-        await axios.put('https://lesson-64-49739.firebaseio.com/contacts/'+data.id+'.json',data)
+        await axios.put('https://lesson-64-49739.firebaseio.com/contacts/'+data.id+'.json',data);
         this.props.history.replace('/contacts');
+    };
+
+    addLink = async e => {
+        e.preventDefault();
+        const data = {...this.state.data};
+        const links = {[this.state.linkName]: {id: nanoid(), link: this.state.link}, ...data.links};
+        data.links = links;
+        this.setState({data: data, link: '', linkName: ''});
+    };
+
+    deleteLink = async (name) => {
+        const data = {...this.state.data};
+        delete data.links[name];
+        this.props.history.replace('/contacts/edit');
     };
 
     changeTitle = e => {
@@ -30,8 +47,16 @@ class ContactsEdit extends Component {
         this.setState({text: e.target.value});
     };
 
+    changeLink = e => {
+        this.setState({link: e.target.value});
+    };
+
+    changeLinkName = e => {
+        this.setState({linkName: e.target.value});
+    };
+
     render() {
-        return (
+        return this.state.data && (
             <div>
                 <h1 className='my-4'>Contacts edit</h1>
                 <Form onSubmit={this.editAbout}>
@@ -41,6 +66,26 @@ class ContactsEdit extends Component {
                     </label>
                     <p className='m-0'>Description</p>
                     <Input type="textarea" onChange={this.changeText} value={this.state.text}/>
+                    <p>Links</p>
+                    <ul>
+                        {Object.keys(this.state.data.links).map(link => {
+                            return (
+                                <li key={this.state.data.links[link].id}>
+                                    <a href={this.state.data.links[link].link}>
+                                        {link}
+                                    </a>
+                                    <Button onClick={() => this.deleteLink(link)} color='light' className='mx-2'>
+                                        X
+                                    </Button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <div className='border w-50 p-2' style={{borderRadius: '.255rem'}}>
+                        <Input onChange={this.changeLinkName} placeholder='Enter link name' id='title' value={this.state.linkName} />
+                        <Input onChange={this.changeLink} placeholder='Enter link' id='title' className='my-2' value={this.state.link} />
+                        <Button onClick={this.addLink}>Add new link</Button>
+                    </div>
                     {this.state.text.length > 0 && this.state.title.length > 0 ? <Button className='my-4'>Add</Button> : <Button className='my-4' disabled>Add</Button>}
                 </Form>
             </div>

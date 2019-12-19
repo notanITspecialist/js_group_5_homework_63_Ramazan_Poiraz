@@ -24,7 +24,13 @@ class Contacts extends Component {
                 <p>Our socials networks:</p>
                 <ul>
                     {Object.keys(this.state.data.links).map(link => {
-                        return <li key={link+this.state.data.links[link]}><a href={this.state.data.links[link]}>{link}</a></li>
+                        return (
+                            <li key={this.state.data.links[link].id}>
+                                <a href={this.state.data.links[link].link}>
+                                    {link}
+                                </a>
+                            </li>
+                        )
                     })}
                 </ul>
                 <NavLink to="/contacts/edit">
