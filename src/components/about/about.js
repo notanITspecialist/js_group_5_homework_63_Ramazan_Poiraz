@@ -1,10 +1,9 @@
+import React, {Component} from 'react';
 import axios from 'axios'
 import Button from "reactstrap/lib/Button";
-
-import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
 
 class About extends Component {
-
     state = {
         data: {}
     };
@@ -20,7 +19,9 @@ class About extends Component {
             <div style={{marginTop: '30px'}}>
                 <h2>{this.state.data.title}</h2>
                 <p>{this.state.data.text}</p>
-                <Button>Edit</Button>
+                <NavLink to="/about/edit">
+                    <Button>Edit</Button>
+                </NavLink>
             </div>
         );
     }
